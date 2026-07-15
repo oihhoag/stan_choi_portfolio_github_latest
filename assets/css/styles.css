@@ -2126,3 +2126,143 @@ a{color:inherit;text-decoration:none} img{display:block;width:100%} button{font:
     grid-row:1/3!important;
   }
 }
+
+
+/* TIME TO BUS GITHUB IMAGE ARCHIVE */
+.project-card .card-media img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+#time-to-bus .timebus-hero{
+  padding:24px;
+  background:#ebe9e3;
+}
+#time-to-bus .timebus-hero img{
+  display:block;
+  width:100%;
+  max-width:1120px;
+  height:auto;
+  margin:0 auto;
+  object-fit:contain;
+}
+.timebus-gallery-section{
+  border-bottom:1px solid var(--line);
+}
+.timebus-gallery-header{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  border-bottom:1px solid var(--line);
+}
+.timebus-gallery-kicker{
+  padding:18px;
+  border-right:1px solid var(--line);
+  font-size:8.5px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-weight:500;
+}
+.timebus-gallery-title{
+  padding:34px 4vw 38px;
+}
+.timebus-gallery-title h2{
+  max-width:820px;
+  font-size:clamp(25px,3.1vw,44px);
+  line-height:1.05;
+  letter-spacing:-.04em;
+  font-weight:400;
+}
+.timebus-gallery-title p{
+  max-width:640px;
+  margin-top:12px;
+  font-size:12px;
+  line-height:1.7;
+  color:#666;
+}
+.timebus-image-gallery{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1px;
+  padding:28px 20px 42px;
+  background:#dedbd3;
+}
+.timebus-gallery-item{
+  width:100%;
+  max-width:1120px;
+  margin:0;
+  background:#fff;
+}
+.timebus-gallery-item img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+@media(max-width:800px){
+  .timebus-gallery-header{
+    grid-template-columns:1fr;
+  }
+  .timebus-gallery-kicker{
+    border-right:0;
+    border-bottom:1px solid var(--line);
+    padding:12px 16px;
+  }
+  .timebus-gallery-title{
+    padding:28px 16px;
+  }
+  .timebus-image-gallery{
+    padding:16px 0 28px;
+  }
+}
+
+/* LS STORYBOARD + LAUNCH VIDEO */
+.storyboard-slides{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:1px;
+  padding:24px 20px 36px;
+  background:#dedbd3;
+}
+.storyboard-slide{
+  width:100%;
+  max-width:1120px;
+  margin:0;
+  background:#fff;
+}
+.storyboard-slide img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.storyboard-slide figcaption{
+  padding:10px 12px;
+  border-top:1px solid var(--line);
+  font-size:8px;
+  letter-spacing:.08em;
+  color:#666;
+}
+.video-embed{
+  position:relative;
+  width:100%;
+  max-width:1120px;
+  aspect-ratio:16/9;
+  margin-top:26px;
+  overflow:hidden;
+  background:#111;
+}
+.video-embed iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+@media(max-width:800px){
+  .storyboard-slides{
+    padding:16px 0 24px;
+  }
+}
