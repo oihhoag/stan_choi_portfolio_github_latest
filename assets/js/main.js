@@ -392,3 +392,44 @@ function goHome(){
     track.addEventListener('pointerup',end);track.addEventListener('pointercancel',end);go(0);
   });
 })();
+
+// Buyers Guide: switch between the feed and story deliverables of the same unit.
+(function(){
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-ratio-scope]').forEach(scope=>{
+    const buttons=[...scope.querySelectorAll('[data-ratio-set]')];
+    if(!buttons.length)return;
+    function apply(ratio){
+      scope.dataset.ratio=ratio;
+      buttons.forEach(b=>{const on=b.dataset.ratioSet===ratio;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false')});
+      scope.querySelectorAll('video').forEach(v=>{
+        const pane=v.closest('[data-ratio-pane]');
+        if(pane&&pane.dataset.ratioPane===ratio&&!reduce){
+          const p=v.play();
+          // Autoplay is refused in some embedded contexts; hand the control back
+          // to the reader rather than leaving a still poster with no affordance.
+          if(p&&p.catch)p.catch(()=>{v.controls=true;v.closest('.bw-guide-video').classList.add('is-paused')});
+        }
+        else{v.pause()}
+      });
+    }
+    buttons.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.ratioSet)));
+    apply(scope.dataset.ratio||buttons[0].dataset.ratioSet);
+  });
+  if(reduce){document.querySelectorAll('.bw-guide-video video').forEach(v=>{v.removeAttribute('autoplay');v.controls=true;v.pause()})}
+})();
+
+// Clicking a Buyers Guide video toggles it, so the 15s film can be stopped or
+// restarted whether or not autoplay was allowed.
+(function(){
+  document.querySelectorAll('.bw-guide-video').forEach(box=>{
+    const v=box.querySelector('video');
+    if(!v)return;
+    box.addEventListener('click',e=>{
+      if(e.target.tagName==='VIDEO'&&v.controls)return;
+      if(v.paused){const p=v.play();if(p&&p.catch)p.catch(()=>{v.controls=true})}else{v.pause()}
+    });
+    v.addEventListener('play',()=>box.classList.remove('is-paused'));
+    v.addEventListener('pause',()=>box.classList.add('is-paused'));
+  });
+})();
