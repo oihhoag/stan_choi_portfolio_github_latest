@@ -433,3 +433,38 @@ function goHome(){
     v.addEventListener('pause',()=>box.classList.add('is-paused'));
   });
 })();
+
+// --- 2026-11-24 fix/pg-beauty-portfolio: project filter + image lightbox ---
+(function(){
+  var btns=Array.prototype.slice.call(document.querySelectorAll('.pg-filter-btn'));
+  if(!btns.length)return;
+  function apply(filter){
+    btns.forEach(function(b){b.classList.toggle('is-active',b.dataset.filter===filter)});
+    document.querySelectorAll('.work-sections .project-card').forEach(function(card){
+      if(card.classList.contains('project-card--hidden'))return;
+      var cats=(card.dataset.category||'').split(' ').filter(Boolean);
+      var show=filter==='all'||cats.indexOf(filter)!==-1;
+      card.classList.toggle('is-filtered-out',!show);
+    });
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.filter)})});
+})();
+(function(){
+  var overlay=null;
+  function close(){if(overlay){overlay.remove();overlay=null;document.removeEventListener('keydown',onKey)}}
+  function onKey(e){if(e.key==='Escape')close()}
+  document.querySelectorAll('.detail .gallery img').forEach(function(img){
+    img.style.cursor='zoom-in';
+    img.addEventListener('click',function(){
+      close();
+      overlay=document.createElement('div');
+      overlay.className='lightbox-overlay';
+      var big=document.createElement('img');
+      big.src=img.currentSrc||img.src; big.alt=img.alt||'';
+      overlay.appendChild(big);
+      overlay.addEventListener('click',close);
+      document.addEventListener('keydown',onKey);
+      document.body.appendChild(overlay);
+    });
+  });
+})();
