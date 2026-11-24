@@ -3428,3 +3428,8 @@ img,video,svg{max-width:100%}
 .lightbox-overlay{position:fixed;inset:0;z-index:100;background:rgba(20,20,20,.92);display:flex;align-items:center;justify-content:center;padding:4vw;cursor:zoom-out}
 .lightbox-overlay img{max-width:100%;max-height:92vh;width:auto;height:auto;object-fit:contain;background:#f5f3ee;padding:12px}
 @media(max-width:800px){.photo-grid{grid-template-columns:1fr 1fr}.about-contact{grid-template-columns:1fr}}
+
+/* 2026-11-24: Lash packaging detail images (DETAIL 01/02) — smaller, no longer full-width dominant */
+.gallery figure.detail-sm{padding:20px 24px 0}
+.gallery figure.detail-sm img{max-width:min(520px,100%)}
+@media(max-width:800px){.gallery figure.detail-sm{padding:12px 12px 0}}

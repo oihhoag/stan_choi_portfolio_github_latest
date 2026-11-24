@@ -95,7 +95,7 @@ function goHome(){
   if(designMain){
     designMain.addEventListener('click', e=>{
       if(e.target.closest('.line-sidebar__subitem')) return;
-      const first = document.getElementById('work-current');
+      const first = document.getElementById('work-featured');
       if(first){
         first.open = true;
         first.scrollIntoView({behavior:'smooth', block:'start'});
