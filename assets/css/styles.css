@@ -3395,3 +3395,46 @@ a{color:inherit;text-decoration:none} img{display:block;width:100%} button{font:
 .bw330-youtube .bw290-section-heading p{color:#0c1429!important}
 .bw330-main-youtube .bw290-section-heading p,
 .bw330-youtube .bw290-section-heading p{opacity:.7}
+
+/* --- 2026-11-24 fix/pg-beauty-portfolio: overflow, featured/filter, slots --- */
+html,body{overflow-x:hidden;max-width:100%}
+body{min-width:0}
+img,video,svg{max-width:100%}
+.hero,.detail-hero,.case-section,.work-grid,.gallery,.detail-meta,.about-meta-grid{min-width:0}
+.hero{grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr)}
+.hero h1{max-width:100%}
+@media(max-width:1100px){.bw-brochure-track{margin-inline:0;padding-left:20px;padding-right:20px}.bw290-organic-rail{padding-left:20px;padding-right:20px}}
+/* Fixed-height gallery boxes left large empty beige areas around smaller
+   images; let figures size to their content instead. */
+.gallery figure,.gallery figure.wide{height:auto;min-height:0}
+.gallery figure img{max-height:560px}
+.project-card--hidden{display:none!important}
+.project-card.is-filtered-out{display:none}
+.pg-filter{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line)}
+.pg-filter-label{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-right:4px}
+.pg-filter-btn{font:inherit;font-size:10px;letter-spacing:.05em;background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.pg-filter-btn.is-active{background:#111;color:#f5f3ee;border-color:#111}
+.pg-featured{border-bottom:1px solid var(--line)}
+.pg-featured-label{padding:14px 18px 0;font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+.pg-featured-note{padding:0 18px 14px;font-size:10px;color:var(--muted)}
+.card-meta{margin-top:8px;font-size:9px;letter-spacing:.05em;color:var(--muted)}
+.image-slot{display:flex;align-items:center;justify-content:center;min-height:180px;background:#e9e7e1;border:1px dashed #999;padding:24px;text-align:center}
+.image-slot span{font-size:11px;line-height:1.6;color:#555;max-width:520px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:20px 18px}
+.photo-slot{aspect-ratio:4/3;background:#e9e7e1;border:1px dashed #bbb}
+.about-photo-slot{min-height:320px;background:#e9e7e1;border:1px dashed #bbb}
+.about-contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.about-contact-item .about-meta-value{color:var(--muted)}
+.lightbox-overlay{position:fixed;inset:0;z-index:100;background:rgba(20,20,20,.92);display:flex;align-items:center;justify-content:center;padding:4vw;cursor:zoom-out}
+.lightbox-overlay img{max-width:100%;max-height:92vh;width:auto;height:auto;object-fit:contain;background:#f5f3ee;padding:12px}
+@media(max-width:800px){.photo-grid{grid-template-columns:1fr 1fr}.about-contact{grid-template-columns:1fr}}
+
+/* 2026-11-24: Lash packaging detail images (DETAIL 01/02) — smaller, no longer full-width dominant */
+.gallery figure.detail-sm{padding:20px 24px 0}
+.gallery figure.detail-sm img{max-width:min(520px,100%)}
+@media(max-width:800px){.gallery figure.detail-sm{padding:12px 12px 0}}
+
+/* 2026-11-24: Photography grid images fill their slots; About contact links inherit text colour */
+.photo-grid .photo-slot{border:0;background:none;overflow:hidden}
+.photo-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.about-meta-value a{color:inherit}
